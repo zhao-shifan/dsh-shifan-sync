@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Shifan sync",
+    "description": "Syncs profile config, plugins, skills, storages, and sessions to a private Git repository so another computer can pull the latest state."
+  }
+}

@@ -1,0 +1,9 @@
+# dsh-shifan-sync — account-level state sync via a private Git repository
+# Settings live in ~/.dsh/.dsh-shifan-sync/settings.json and are managed by the
+# sync_setup tool (repoUrl, branch, autoPush, autoPullMinutes, encryptCredentials).
+# Git authentication uses the credential record DSH_SHIFAN_SYNC_TOKEN (PAT);
+# the encryption passphrase uses DSH_SHIFAN_SYNC_PASSPHRASE.
+- insert:
+    - id: shifan-sync
+      name: dsh-shifan-sync
+      config: {}

@@ -1,0 +1,26 @@
+{
+  "name": "dsh-shifan-sync",
+  "version": "0.1.0",
+  "description": "Account-level sync for DeepSeek Harness: mirrors profile config, installed bundles, skills, storages, and sessions to a private Git repository so another computer can pull the latest state after signing in.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/sync-core.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" }
+  }
+}
