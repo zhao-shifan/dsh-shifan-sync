@@ -6,11 +6,13 @@
   "main": "lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./client": "./lib/client.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
   "files": [
     "lib/index.js",
+    "lib/client.js",
     "lib/sync-core.js",
     "cordis.patch.yml",
     "locale/*.json",
@@ -21,6 +23,10 @@
     "node": ">=20"
   },
   "dsh": {
-    "bundle": { "patch": "./cordis.patch.yml" }
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
   }
 }

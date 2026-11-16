@@ -56,17 +56,25 @@ git clone https://github.com/<你的用户名>/dsh-shifan-sync.git
 
 ### 快速开始
 
-1. 在 GitHub/Gitee 建一个 **私有(Private)** 空仓库,并生成一个只授权该仓库 Contents 读写的访问令牌(PAT)
-2. 在 DSH 里让 AI 执行 `sync_setup`(填仓库地址 + 令牌;想把 API key 等凭据一并同步,再设一个加密口令),然后 `sync_push` 完成首次推送
-3. 新电脑:安装本插件 → 同样 `sync_setup` → `sync_pull` → 重启 DSH,即恢复到最新状态;之后改动自动推送、定期自动拉取
+**方式 A:同步文件夹(推荐,零账号零令牌)**
+
+1. 侧边栏点"时帆同步" → 同步方式选「同步文件夹」 → 「选择文件夹」
+2. 建议把文件夹放进 **OneDrive / 百度网盘 / 坚果云** 等网盘的同步目录 → 网盘自动帮你跨电脑传数据
+3. 新电脑:装好插件 → 选**网盘同步出来的同一个文件夹** → 点「从云端恢复」→ 重启 DSH 即恢复
+
+**方式 B:Git 私有仓库(高级)**
+
+1. 建一个 **私有(Private)** 空仓库,生成只授权该仓库 Contents 读写的 PAT 令牌
+2. 页面里切到「Git 私有仓库」,填仓库地址 + 令牌 → 保存并启用(自动首次推送)
+3. 新电脑:同样填一次 → 「从云端恢复」→ 重启 DSH
 
 ### 工具
 
 | 工具 | 作用 |
 |---|---|
-| `sync_setup` | 配置仓库/令牌/口令 |
-| `sync_push` | 推送本机状态到云端 |
-| `sync_pull` | 拉取云端最新状态(LWW 合并,需重启 DSH 生效) |
+| `sync_setup` | 配置 Git 仓库模式(仓库/令牌/口令) |
+| `sync_push` | 推送本机状态(自动识别文件夹/Git 模式) |
+| `sync_pull` | 拉取并恢复(LWW 合并,需重启 DSH 生效) |
 | `sync_status` | 查看配置与上次推/拉时间 |
 
 ### 配置说明
@@ -146,17 +154,25 @@ Prerequisite: git installed and on PATH.
 
 ### Quick start
 
-1. Create a **private** empty repository and a fine-grained PAT with Contents read/write on that repository only.
-2. In DSH, ask the AI to run `sync_setup` (repository URL + token; optionally an encryption passphrase to also sync `credentials.yaml`), then `sync_push`.
-3. New machine: install the plugin → `sync_setup` → `sync_pull` → restart DSH. Changes auto-push and pull periodically afterwards.
+**Option A — sync folder (recommended, no account needed)**
+
+1. Open the "Shifan sync" page from the sidebar → pick "Sync folder" → "Choose folder".
+2. Put the folder inside a cloud-drive sync directory (OneDrive / Baidu Net Disk / Nutstore) so it travels across machines automatically.
+3. New machine: install the plugin → select the **same synced folder** → "Restore from cloud" → restart DSH.
+
+**Option B — Git private repository (advanced)**
+
+1. Create a **private** empty repository and a PAT with Contents read/write on it.
+2. Switch the page to "Git private repository", fill URL + token, save.
+3. New machine: fill the same, "Restore from cloud", restart DSH.
 
 ### Tools
 
 | Tool | Purpose |
 |---|---|
-| `sync_setup` | Configure repository, token, passphrase, options |
-| `sync_push` | Snapshot this machine's state into the repository and push |
-| `sync_pull` | Fetch the latest state and apply it locally (LWW merge) |
+| `sync_setup` | Configure the Git backend (repository/token/passphrase) |
+| `sync_push` | Push this machine's state (folder/Git mode auto-detected) |
+| `sync_pull` | Restore the latest state (LWW merge; restart DSH after) |
 | `sync_status` | Show configuration, last push/pull times, Git worktree state |
 
 ### Configuration
